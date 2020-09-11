@@ -1,0 +1,13 @@
+# dataset
+egs/
+
+# utils
+steps/
+utils/
+
+# backup files
+*.orig
+*.bk
+
+# cache
+*.pyc
