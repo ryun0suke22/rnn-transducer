@@ -124,6 +124,7 @@ class AudioDataset(Dataset):
 
         if self.short_first and type == 'train':
             self.sorted_list = sorted(self.targets_dict.items(), key=lambda x: len(x[1]), reverse=False)
+            # self.sorted_list = sorted(self.targets_dict.items(), key=lambda x: len(x[1]), reverse=True)
         else:
             self.sorted_list = None
 
@@ -148,6 +149,11 @@ class AudioDataset(Dataset):
 
         features = self.concat_frame(features)
         features = self.subsampling(features)
+
+        # sizeが大きすぎる場合、データを切り落とす
+        if(int(features.shape[0]) > int(self.max_input_length)):
+            features = features[:self.max_input_length, :]
+        ###
 
         inputs_length = np.array(features.shape[0]).astype(np.int64)
         targets_length = np.array(targets.shape[0]).astype(np.int64)
