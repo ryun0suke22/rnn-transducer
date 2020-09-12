@@ -151,6 +151,7 @@ class AudioDataset(Dataset):
         features = self.subsampling(features)
 
         # sizeが大きすぎる場合、データを切り落とす
+        # RNNTの計算の構造(BPTT)上、長い系列データを扱うのはNG.
         if(int(features.shape[0]) > int(self.max_input_length)):
             features = features[:self.max_input_length, :]
         ###
