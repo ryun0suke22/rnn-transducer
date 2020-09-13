@@ -4,11 +4,13 @@ feature_type: mfcc
 data:
     name: aishell
     vocab: egs/aishell/data/vocab
-    left_context_width: 3
+    # left_context_width: 3
+    left_context_width: 0
     right_context_width: 0
     frame_rate: 30
     apply_cmvn: True
-    max_input_length: 500
+    # max_input_length: 500  # maximum treatable is 270 with 11GB GPU mem. 
+    max_input_length: 120
     max_target_length: 50
     # batch_size: 8
     batch_size: 2
@@ -37,7 +39,7 @@ model:
     vocab_size: 60218
     share_weight: False
     # feature_dim: 160
-    feature_dim: 120
+    feature_dim: 30
     dropout: 0.3
 training:
     load_model: False
