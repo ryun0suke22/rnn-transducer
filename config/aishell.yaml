@@ -42,11 +42,10 @@ model:
     feature_dim: 30
     dropout: 0.3
 training:
-    load_model: False
-    load_encoder: False
-    load_decoder: False
-    # eval_or_not: True
-    eval_or_not: False
+    load_model: True
+    load_encoder: True
+    load_decoder: True
+    eval_or_not: True
     seed: 2019
     num_gpu: 2
     # num_gpu: 1
